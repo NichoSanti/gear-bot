@@ -1,8 +1,6 @@
 import os
 import discord
-import json
-import aiohttp
-import requests
+import random
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -18,13 +16,10 @@ guilty_gear_characters = [
     "Jack-O", "Happy Chaos", "Baiken", "Testament", "Bridget"
 ]
 
+league_characters = [
+    "Sion"
+]
 
-@client.event
-async def on_message(message):
-    if message.author == client.user:
-        return
-    
-    
 
 @client.event
 async def on_ready():
@@ -36,8 +31,9 @@ async def on_message(message):
     if message.author == client.user:
         return
     if message.content.startswith('-Guilty Gear'):
-        quote = get_quote()
-        await message.channel.send(quote)
+        await message.channel.send(random.choice(guilty_gear_characters))
+    if message.content.startswith('-League'):
+        await message.channel.send(random.choice(league_characters))
 
 client.run(TOKEN)
 
