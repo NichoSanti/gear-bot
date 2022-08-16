@@ -17,7 +17,7 @@ guilty_gear_characters = [
 ]
 
 league_characters = [
-    "Sion"
+    "Sion", "Heimerdinger"
 ]
 
 
@@ -31,9 +31,11 @@ async def on_message(message):
     if message.author == client.user:
         return
     if message.content.startswith('-Guilty Gear'):
-        await message.channel.send(random.choice(guilty_gear_characters))
+        gear = (random.choice(guilty_gear_characters))
+        await message.channel.send(f"Play {gear}")
     if message.content.startswith('-League'):
-        await message.channel.send(random.choice(league_characters))
+        league = (random.choice(guilty_gear_characters))
+        await message.channel.send(f"Play {league}")
 
 client.run(TOKEN)
 
